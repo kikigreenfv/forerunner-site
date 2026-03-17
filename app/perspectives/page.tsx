@@ -1,4 +1,3 @@
-"use client"
 
 import { useState, useMemo, useEffect, useRef } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
@@ -9,7 +8,6 @@ import { ArrowUpRight, Search, X } from "lucide-react"
 import { articles, categories, getYears, getCompanies } from "@/lib/perspectives-data"
 
 export default function PerspectivesPage() {
-  const searchParams = useSearchParams()
   const router = useRouter()
   
   const [selectedYear, setSelectedYear] = useState<number | string | null>(null)
@@ -22,17 +20,6 @@ export default function PerspectivesPage() {
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null)
   
   // Initialize filters from URL params
-  useEffect(() => {
-    const yearParam = searchParams.get('year')
-    const categoryParam = searchParams.get('category')
-    const companyParam = searchParams.get('company')
-    const authorParam = searchParams.get('author')
-    
-    if (yearParam) setSelectedYear(yearParam === "Pre-2022" ? yearParam : parseInt(yearParam))
-    if (categoryParam) setSelectedCategory(categoryParam)
-    if (companyParam) setSelectedCompany(companyParam)
-    if (authorParam) setSelectedAuthor(authorParam)
-  }, [searchParams])
 
   const years = useMemo(() => getYears(), [])
   const companies = useMemo(() => getCompanies(), [])
