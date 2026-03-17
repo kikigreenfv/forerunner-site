@@ -60,9 +60,11 @@ export default function PerspectivesPage() {
 
               {/* Content */}
               <div className="max-w-xl">
-                <h2 className="text-xl font-serif text-[#0a1f44] mb-2">
-                  {article.title}
-                </h2>
+                <a href={`/perspectives/${article.slug}`}>
+  <h2 className="text-xl font-serif text-[#0a1f44] mb-2 hover:underline">
+    {article.title}
+  </h2>
+</a>
                 <p className="text-gray-500 text-sm mb-2">
                   {article.excerpt}
                 </p>
